@@ -11,7 +11,7 @@ function renderLicenseBadge(license) {
     mozilla: '![License: MPL 2.0](https://img.shields.io/badge/License-MPL%202.0-brightgreen.svg)',
     none: '',
   };
-  return badges[license];
+  return badges[license] || '';
 }
 
 
@@ -28,7 +28,7 @@ function renderLicenseLink(license) {
     mozilla: 'https://opensource.org/licenses/MPL-2.0',
     none: '',
   };
-  return links[license];
+  return links[license] || '';
 }
 
 
@@ -45,4 +45,33 @@ function renderLicenseSection(license) {
 
 // TODO: Create a function to generate markdown for README
 function generateMarkdown(data) {
-  return `# ${data.title}`
+  const licenseBadge = renderLicenseBadge(data.license);
+  const licenseSection = renderLicenseSection(data.license);
+  console.log(licenseBadge);
+  return `# ${data.title}
+  ${licenseBadge}
+
+  ## Description
+  ${data.description}
+  ## Table of Contents
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Contribution](#contribution)
+  - [Tests](#tests)
+  - [License](#license)
+  - [Questions](#questions)
+  ## Installation
+  ${data.installation}
+  ## Usage
+  ${data.usage}
+  ## Contribution
+  ${data.contribution}
+  ## Tests
+  ${data.test}
+  ${renderLicenseSection(data.license)}
+  ## Questions
+  If you have any questions, please feel free to contact me at [${data.email}](mailto:${data.email}) or visit my GitHub profile [${data.github}](https://github.com/${data.github}).  
+  `;
+
+}
+module.exports = generateMarkdown;
