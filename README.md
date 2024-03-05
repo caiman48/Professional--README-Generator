@@ -17,11 +17,13 @@ Run npm install to install the necessary dependencies.
 
 ## Video Demostration 
 
+[Uploading Untitled_ Mar 5, 2024 11_50 AM.webm…]()
+
 
 
 ## Usage
 
--  o use the README Generator:
+-  How to  use the README Generator:
 
 Navigate to the repository's directory in your terminal.
 Run node index.js to start the application.
